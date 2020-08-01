@@ -7,7 +7,6 @@ from app.models import User, Post
 from werkzeug.urls import url_parse
 from datetime import datetime
 from app.email import send_api_mail
-from app.email import send_api_mail_async
 
 
 @app.before_request

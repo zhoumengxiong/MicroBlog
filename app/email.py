@@ -1,4 +1,3 @@
-from flask.signals import message_flashed
 from flask_mail import Message
 from app import mail, app
 from flask import render_template, flash
