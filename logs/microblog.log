@@ -1,0 +1,100 @@
+2020-08-01 10:05:55,331 ERROR: Exception on /reset_password/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyZXNldF9wYXNzd29yZCI6MiwiZXhwIjoxNTk2MjQ3OTE2Ljg3NzIwNjh9.sD7KMVMRoJh2FEoGwVOitOwDPp5j0-JhAoYVwoYw5JA [GET] [in d:\myprojects\microblog\env\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "d:\myprojects\microblog\env\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\myprojects\microblog\env\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\myprojects\microblog\env\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "d:\myprojects\microblog\env\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "d:\myprojects\microblog\env\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\myprojects\microblog\env\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "D:\MyProjects\MicroBlog\app\routes.py", line 178, in reset_password
+    return render_template('email/reset_password.html', form=form)
+  File "d:\myprojects\microblog\env\lib\site-packages\flask\templating.py", line 137, in render_template
+    return _render(
+  File "d:\myprojects\microblog\env\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "d:\myprojects\microblog\env\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "d:\myprojects\microblog\env\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "d:\myprojects\microblog\env\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "D:\MyProjects\MicroBlog\app\templates\email\reset_password.html", line 1, in top-level template code
+    <p>Dear {{ user.username }},</p>
+  File "d:\myprojects\microblog\env\lib\site-packages\jinja2\environment.py", line 471, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'user' is undefined
+2020-08-01 10:13:15,472 INFO: Microblog startup [in D:\MyProjects\MicroBlog\app\__init__.py:46]
+2020-08-01 10:20:23,671 INFO: Microblog startup [in D:\MyProjects\MicroBlog\app\__init__.py:46]
+2020-08-01 10:25:44,055 INFO: Microblog startup [in D:\MyProjects\MicroBlog\app\__init__.py:46]
+2020-08-01 10:48:28,156 INFO: Microblog startup [in D:\MyProjects\MicroBlog\app\__init__.py:46]
+2020-08-01 10:52:02,587 INFO: Microblog startup [in D:\MyProjects\MicroBlog\app\__init__.py:46]
+2020-08-01 10:57:57,473 INFO: Microblog startup [in D:\MyProjects\MicroBlog\app\__init__.py:46]
+2020-08-01 11:02:03,916 ERROR: Exception on /reset_password/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyZXNldF9wYXNzd29yZCI6MiwiZXhwIjoxNTk2MjUxNDU3LjgyMjczMzR9.e-dAfa6L6LoAKEH-SuVA_XJmd02AQuRtQOIr-9NCSlw [GET] [in d:\myprojects\microblog\env\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "d:\myprojects\microblog\env\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\myprojects\microblog\env\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\myprojects\microblog\env\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "d:\myprojects\microblog\env\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "d:\myprojects\microblog\env\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\myprojects\microblog\env\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "D:\MyProjects\MicroBlog\app\routes.py", line 178, in reset_password
+    return render_template('email/reset_password.html', form=form)
+  File "d:\myprojects\microblog\env\lib\site-packages\flask\templating.py", line 137, in render_template
+    return _render(
+  File "d:\myprojects\microblog\env\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "d:\myprojects\microblog\env\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "d:\myprojects\microblog\env\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "d:\myprojects\microblog\env\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "D:\MyProjects\MicroBlog\app\templates\email\reset_password.html", line 1, in top-level template code
+    <p>Dear {{ user.username }},</p>
+  File "d:\myprojects\microblog\env\lib\site-packages\jinja2\environment.py", line 471, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'user' is undefined
+2020-08-01 11:10:18,736 INFO: Microblog startup [in D:\MyProjects\MicroBlog\app\__init__.py:46]
+2020-08-01 11:31:28,554 ERROR: Exception on /reset_password/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyZXNldF9wYXNzd29yZCI6MiwiZXhwIjoxNTk2MjUzMjc0LjQ5Mzg3NDV9.BJoVU-bKzsXUqiRi4TamFQU__DM5R9rwL35UCrqAdvY [GET] [in d:\myprojects\microblog\env\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "d:\myprojects\microblog\env\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\myprojects\microblog\env\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\myprojects\microblog\env\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "d:\myprojects\microblog\env\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "d:\myprojects\microblog\env\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\myprojects\microblog\env\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "D:\MyProjects\MicroBlog\app\routes.py", line 178, in reset_password
+    return render_template('email/reset_password.html', form=form)
+  File "d:\myprojects\microblog\env\lib\site-packages\flask\templating.py", line 137, in render_template
+    return _render(
+  File "d:\myprojects\microblog\env\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "d:\myprojects\microblog\env\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "d:\myprojects\microblog\env\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "d:\myprojects\microblog\env\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "D:\MyProjects\MicroBlog\app\templates\email\reset_password.html", line 1, in top-level template code
+    <p>Dear {{ user.username }},</p>
+  File "d:\myprojects\microblog\env\lib\site-packages\jinja2\environment.py", line 471, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'user' is undefined
