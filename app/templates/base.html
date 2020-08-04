@@ -5,6 +5,7 @@
     {% else %}
         <title>Welcome to Microblog!</title>
     {% endif %}
+    {{ bootstrap.load_css() }}
 </head>
 <body>
 <div>
@@ -29,8 +30,8 @@
     {% endif %}
 {% endwith %}
 {% block content %}{% endblock %}
-{% block scripts %}
-    {{ moment.include_moment() }}
-{% endblock %}
+{{ bootstrap.load_js() }}
+{{ moment.include_moment(local_js=url_for('static', filename='js/moment-with-locales.min.js')) }}
+{{ moment.locale(auto_detect=True) }}
 </body>
 </html>
