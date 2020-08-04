@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
 <head>
     {% if title %}
         <title>{{ title }} - Microblog</title>
@@ -29,5 +29,8 @@
     {% endif %}
 {% endwith %}
 {% block content %}{% endblock %}
+{% block scripts %}
+    {{ moment.include_moment() }}
+{% endblock %}
 </body>
 </html>
