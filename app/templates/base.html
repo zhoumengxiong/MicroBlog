@@ -1,13 +1,17 @@
 <html lang="en">
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {% if title %}
         <title>{{ title }} - Microblog</title>
     {% else %}
         <title>Welcome to Microblog!</title>
     {% endif %}
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
     {{ bootstrap.load_css() }}
 </head>
 <body>
+<main class="container">
 <div>
     Microblog:
     <a href="{{ url_for('index') }}">Home</a>
@@ -30,6 +34,7 @@
     {% endif %}
 {% endwith %}
 {% block content %}{% endblock %}
+</main>
 {{ bootstrap.load_js() }}
 {{ moment.include_moment(local_js=url_for('static', filename='js/moment-with-locales.min.js')) }}
 {{ moment.locale(auto_detect=True) }}
