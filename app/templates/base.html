@@ -7,13 +7,13 @@
     {% else %}
         <title>Welcome to Microblog!</title>
     {% endif %}
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
     {{ bootstrap.load_css() }}
 </head>
 <body>
 <main class="container">
     <header>
-        <h1 class="text-center display-4">
+        <h1 class="text-left display-4">
             Microblog
         </h1>
     </header>
@@ -28,15 +28,10 @@
         {% endif %}
     </div>
     <hr>
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <ul>
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-info alert-dismissible"><button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message }}</div>
+    {% endfor %}
     {% block content %}{% endblock %}
 </main>
 {{ bootstrap.load_js() }}
