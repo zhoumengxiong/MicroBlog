@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h4 class="text-left display-4">Hi, {{ current_user.username }}!</h4>
+    <h4 class="text-left">Hi, {{ current_user.username }}!</h4>
     {% if form %}
         <form action="" method="post">
             {{ form.hidden_tag() }}
