@@ -46,7 +46,7 @@ class EditProfileForm(FlaskForm):
 
 
 class PostForm(FlaskForm):
-    post = TextAreaField('发表心情', validators=[DataRequired(), Length(min=1, max=140)])
+    post = TextAreaField('发表动态', validators=[DataRequired(), Length(min=1, max=140)])
     submit = SubmitField('提交')
 
 
