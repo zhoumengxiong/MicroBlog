@@ -85,6 +85,15 @@ class Post(db.Model):
         return '<Post {}>'.format(self.body)
 
 
+class ChipId(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    chip_id = db.Column(db.String(48), unique=True, nullable=False)
+    asset_no = db.Column(db.String(22), unique=True, nullable=False)
+    work_order_no = db.Column(db.String(15), nullable=False)
+    approval_no = db.Column(db.String(12), nullable=False)
+    product_category = db.Column(db.String(20), nullable=False)
+
+
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
