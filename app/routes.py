@@ -184,25 +184,25 @@ def reset_password(token):
     return render_template('reset_password.html', form=form)
 
 
-@app.route('/chip_id', methods=['GET', 'POST'])
+@app.route('/chipid_query', methods=['GET', 'POST'])
 def chip_id():
+    return render_template('chipid_query.html', title="芯片ID查询入口")
+
+
+@app.route('/chipid_results', methods=['GET', 'POST'])
+def chipid_results():
     page = request.args.get('page', 1, type=int)
-    pagination = ChipId.query.paginate(
-        page, app.config['POSTS_PER_PAGE'], False)
-    page = request.args.get('page', 1, type=int)
-    if request.method == 'POST':
-        field_query = request.form.get('field_query').upper().strip()
-        product_category = request.form.getlist('product_category')
-        method_query = request.form.get('method_query')
-        print(method_query, field_query, product_category)
-        if method_query == "1":
-            pagination = db.session.query(ChipId).join(ApprovalNo).filter(
-                ApprovalNo.approval_no == field_query).join(ProductCategory).filter(
-                ProductCategory.product_category.in_(product_category)).paginate(
-                page, app.config['POSTS_PER_PAGE'], False)
-        else:
-            pagination = db.session.query(ChipId).join(WorkOrderNo).filter(
-                WorkOrderNo.work_order_no == field_query).join(ProductCategory).filter(
-                ProductCategory.product_category.in_(product_category)).paginate(
-                page, app.config['POSTS_PER_PAGE'], False)
-    return render_template('chipid_query.html', title='ChipId Query', results=pagination.items, pagination=pagination)
+    field_query = request.form.get('field_query').upper().strip()
+    product_category = request.form.getlist('product_category')
+    method_query = request.form.get('method_query')
+    if method_query == "1":
+        pagination = db.session.query(ChipId).join(ApprovalNo).filter(
+            ApprovalNo.approval_no == field_query).join(ProductCategory).filter(
+            ProductCategory.product_category.in_(product_category)).paginate(
+            page, app.config['POSTS_PER_PAGE'], False)
+    else:
+        pagination = db.session.query(ChipId).join(WorkOrderNo).filter(
+            WorkOrderNo.work_order_no == field_query).join(ProductCategory).filter(
+            ProductCategory.product_category.in_(product_category)).paginate(
+            page, app.config['POSTS_PER_PAGE'], False)
+    return render_template('chipid_results.html', title='芯片ID查询结果', results=pagination.items, pagination=pagination)
