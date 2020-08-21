@@ -192,9 +192,9 @@ def chip_id():
 @app.route('/chipid_results', methods=['GET', 'POST'])
 def chipid_results():
     page = request.args.get('page', 1, type=int)
-    field_query = request.form.get('field_query').upper().strip()
-    product_category = request.form.getlist('product_category')
-    method_query = request.form.get('method_query')
+    field_query = request.args.get('field_query').upper().strip()
+    product_category = request.args.getlist('product_category')
+    method_query = request.args.get('method_query')
     if method_query == "1":
         pagination = db.session.query(ChipId).join(ApprovalNo).filter(
             ApprovalNo.approval_no == field_query).join(ProductCategory).filter(
