@@ -12,3 +12,15 @@ footer {
     width: 100%;
     padding: 5px;
 }
+
+.table {
+    margin-top: 12px;
+    /*font-size: 14px;*/
+
+}
+
+.table th,
+.table td {
+    text-align: center;
+    vertical-align: middle !important;
+}
