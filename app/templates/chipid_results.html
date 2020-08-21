@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div style="margin-bottom: 10px;"><a href="{{ url_for('index') }}">&larr; 返回</a></div>
+    {% if pagination %}
+        <h4>共搜索到{{ results|length }}记录:</h4>
+        <div>
+            <table class="table table-sm table-hover">
+                <thead class="thead-light">
+                <tr>
+                    <th>芯片ID</th>
+                    <th>资产码</th>
+                    <th>派工单号</th>
+                    <th>审批编号</th>
+                    <th>产品型态</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for result in results %}
+                    <tr>
+                        <td>{{ result.chip_id }}</td>
+                        <td>{{ result.asset_no }}</td>
+                        <td>{{ result.workorderno.work_order_no }}</td>
+                        <td>{{ result.approvalno.approval_no }}</td>
+                        <td>{{ result.productcategory.product_category }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% from 'bootstrap/pagination.html' import render_pagination %}
+        {% if results %}
+            <div>{{ render_pagination(pagination=pagination,align='center') }}</div>
+        {% endif %}
+    {% endif %}
+{% endblock %}
