@@ -15,3 +15,4 @@ class Config(object):
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     ADMINS = ['noreply@heypython.cn']
     POSTS_PER_PAGE = 10
+    ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL')

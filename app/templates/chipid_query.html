@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2 class="text-left">查询芯片ID对应关系</h2>
+    <br>
+    <form method="post">
+        <div class="form-group">
+            <label for="field_query">填入审批单号后6位或者派工单号</label>
+            <input type="text" class="form-control form-control-sm" id="field_query" name="field_query"
+                   autocomplete="off"
+                   required>
+        </div>
+        <div class="form-group">
+            <label for="product_category">选择产品型态：(按住 shift 键，可以选取多个选项):</label>
+            <select multiple class="form-control form-control-sm" id="product_category" name="product_category"
+                    required>
+                <option selected>通信单元（单相/HPLC）</option>
+                <option>通信单元（三相/HPLC）</option>
+                <option>通信单元（集中器I型/HPLC）</option>
+                <option>通信单元（I采/HPLC）</option>
+                <option>II型采集器（HPLC）</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="radio"><input type="radio" name="method_query" checked="checked">按审批单号查询</label>
+            <label class="radio"><input type="radio" name="method_query">按派工单号查询</label>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">开始查询</button>
+        </div>
+    </form>
+    {% if request.method == 'POST' %}
+        <div style="margin-bottom: 10px;"><a href="{{ url_for('index') }}">&larr; 返回</a></div>
+        <h5>共搜索到{{ results|length }}记录:</h5>
+        <div>
+            <table class="table table-sm table-hover">
+                <thead class="thead-light">
+                <tr>
+                    <th>芯片ID</th>
+                    <th>资产码</th>
+                    <th>派工单号</th>
+                    <th>审批编号</th>
+                    <th>产品型态</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for result in results %}
+                    <tr>
+                        <td>{{ result.chip_id }}</td>
+                        <td>{{ result.asset_no }}</td>
+                        <td>{{ result.workorderno.work_order_no }}</td>
+                        <td>{{ result.approvalno.approval_no }}</td>
+                        <td>{{ result.productcategory.product_category }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        {% if prev_url %}
+            <a href="{{ prev_url }}">上一页</a>
+        {% endif %}
+        {% if next_url %}
+            <a href="{{ next_url }}">下一页</a>
+        {% endif %}
+    {% endif %}
+{% endblock %}
