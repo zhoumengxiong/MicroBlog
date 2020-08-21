@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div style="margin-bottom: 10px;"><a href="{{ url_for('index') }}">&larr; 返回查询入口</a></div>
+    <div style="margin-bottom: 10px;"><a href="{{ url_for('chip_id') }}">&larr; 返回查询入口</a></div>
     {% if pagination %}
         <h4>共查找到{{ results|length }}记录:</h4>
         <div>
