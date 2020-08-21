@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2 class="text-left">查询芯片ID对应关系</h2>
+    <h3 class="text-left">查询芯片ID对应关系</h3>
     <br>
-    <form method="post">
+    <form method="post" action="{{ url_for('chipid_results') }}">
         <div class="form-group">
             <label for="field_query">填入审批单号后6位或者派工单号</label>
             <input type="text" class="form-control form-control-sm" id="field_query" name="field_query"
@@ -29,35 +29,4 @@
             <button type="submit" class="btn btn-primary">开始查询</button>
         </div>
     </form>
-    {% if request.method == 'POST' %}
-        <h5>共搜索到{{ results|length }}记录:</h5>
-        <div>
-            <table class="table table-sm table-hover">
-                <thead class="thead-light">
-                <tr>
-                    <th>芯片ID</th>
-                    <th>资产码</th>
-                    <th>派工单号</th>
-                    <th>审批编号</th>
-                    <th>产品型态</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for result in results %}
-                    <tr>
-                        <td>{{ result.chip_id }}</td>
-                        <td>{{ result.asset_no }}</td>
-                        <td>{{ result.workorderno.work_order_no }}</td>
-                        <td>{{ result.approvalno.approval_no }}</td>
-                        <td>{{ result.productcategory.product_category }}</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        {% from 'bootstrap/pagination.html' import render_pagination %}
-        {% if results %}
-            <div>{{ render_pagination(pagination=pagination,align='center') }}</div>
-        {% endif %}
-    {% endif %}
 {% endblock %}
