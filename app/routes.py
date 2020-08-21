@@ -7,7 +7,6 @@ from app.models import User, Post, ApprovalNo, WorkOrderNo, ProductCategory, Chi
 from werkzeug.urls import url_parse
 from datetime import datetime
 from app.email import send_api_mail
-from sqlalchemy import and_
 
 
 @app.before_request
@@ -195,7 +194,8 @@ def chip_id():
         field_query = request.form.get('field_query').upper().strip()
         product_category = request.form.getlist('product_category')
         method_query = request.form.get('method_query')
-        if method_query == "按审批单号查询":
+        print(method_query, field_query, product_category)
+        if method_query == "1":
             pagination = db.session.query(ChipId).join(ApprovalNo).filter(
                 ApprovalNo.approval_no == field_query).join(ProductCategory).filter(
                 ProductCategory.product_category.in_(product_category)).paginate(
