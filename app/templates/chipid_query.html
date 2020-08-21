@@ -30,7 +30,6 @@
         </div>
     </form>
     {% if request.method == 'POST' %}
-        <div style="margin-bottom: 10px;"><a href="{{ url_for('index') }}">&larr; 返回</a></div>
         <h5>共搜索到{{ results|length }}记录:</h5>
         <div>
             <table class="table table-sm table-hover">
