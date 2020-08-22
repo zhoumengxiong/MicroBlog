@@ -191,10 +191,16 @@ def chip_id():
 
 @app.route('/chipid_results', methods=['GET', 'POST'])
 def chipid_results():
+    results = None
     page = request.args.get('page', 1, type=int)
-    field_query = request.args.get('field_query').upper().strip()
+    field_query = request.args.get('field_query')
     product_category = request.args.getlist('product_category')
     method_query = request.args.get('method_query')
+    if request.method == "POST":
+        page = request.form.get('page', 1, type=int)
+        field_query = request.form.get('field_query').upper().strip()
+        product_category = request.form.getlist('product_category')
+        method_query = request.form.get('method_query')
     if method_query == "1":
         pagination = db.session.query(ChipId).join(ApprovalNo).filter(
             ApprovalNo.approval_no == field_query).join(ProductCategory).filter(
@@ -205,6 +211,7 @@ def chipid_results():
             WorkOrderNo.work_order_no == field_query).join(ProductCategory).filter(
             ProductCategory.product_category.in_(product_category)).paginate(
             page, app.config['POSTS_PER_PAGE'], False)
-    results = pagination.items
-    return render_template('chipid_results.html', title='芯片ID查询结果', product_category=product_category,
-                           results=results, pagination=pagination)
+    if pagination:
+        results = pagination.items
+    return render_template('chipid_results.html', title='芯片ID查询结果', results=results, pagination=pagination,
+                           field_query=field_query, product_category=product_category, method_query=method_query)
