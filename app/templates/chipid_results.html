@@ -3,7 +3,7 @@
 {% block content %}
     <div style="margin-bottom: 10px;"><a href="{{ url_for('chip_id') }}">&larr; 返回查询入口</a></div>
     {% if pagination %}
-        <h4>共查找到{{ results|length }}记录:</h4>
+        <h4>共查找到{{ pagination|length }}记录:</h4>
         <div>
             <table class="table table-sm table-hover">
                 <thead class="thead-light">
@@ -29,8 +29,6 @@
             </table>
         </div>
         {% from 'bootstrap/pagination.html' import render_pagination %}
-        {% if results %}
             <div>{{ render_pagination(pagination=pagination,align='center') }}</div>
-        {% endif %}
     {% endif %}
 {% endblock %}
