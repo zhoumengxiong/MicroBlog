@@ -3,7 +3,7 @@
 {% block content %}
     <h3 class="text-left">查询芯片ID对应关系</h3>
     <br>
-    <form method="POST" action="{{ url_for('chipid_results') }}">
+    <form method="POST" action="">
         <div class="form-group">
             <label for="field_query">填入审批单号后6位或者派工单号</label>
             <input type="text" class="form-control form-control-sm" id="field_query" name="field_query"
@@ -26,7 +26,7 @@
             <label class="radio"><input type="radio" name="method_query" value="2">按派工单号查询</label>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">开始查询</button>
+            <button type="submit" class="btn btn-primary">查询</button>
         </div>
     </form>
 {% endblock %}
