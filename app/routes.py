@@ -206,4 +206,5 @@ def chipid_results():
             ProductCategory.product_category.in_(product_category)).paginate(
             page, app.config['POSTS_PER_PAGE'], False)
     results = pagination.items
-    return render_template('chipid_results.html', title='芯片ID查询结果', results=results, pagination=pagination)
+    return render_template('chipid_results.html', title='芯片ID查询结果', product_category=product_category,
+                           results=results, pagination=pagination)
