@@ -84,6 +84,7 @@ class Post(db.Model):
     def __repr__(self):
         return '<Post {}>'.format(self.body)
 
+
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
@@ -110,7 +111,7 @@ class ProductCategory(db.Model):
     __tablename__ = 'product_category'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     product_category = db.Column(db.String(20), unique=True,
-                              nullable=False, index=True)
+                                 nullable=False, index=True)
     chipids = db.relationship("ChipId", back_populates="productcategory")
 
 
@@ -120,7 +121,7 @@ class ChipId(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     chip_id = db.Column(db.String(48), unique=True, nullable=False)
     asset_no = db.Column(db.String(22), unique=True, nullable=False)
-    work_order_no_id =db.Column(db.Integer, db.ForeignKey('work_order_no.id'))
+    work_order_no_id = db.Column(db.Integer, db.ForeignKey('work_order_no.id'))
     approval_no_id = db.Column(db.Integer, db.ForeignKey('approval_no.id'))
     product_category_id = db.Column(db.Integer, db.ForeignKey('product_category.id'))
     workorderno = db.relationship("WorkOrderNo", back_populates="chipids")
