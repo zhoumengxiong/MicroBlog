@@ -205,4 +205,5 @@ def chipid_results():
             WorkOrderNo.work_order_no == field_query).join(ProductCategory).filter(
             ProductCategory.product_category.in_(product_category)).paginate(
             page, app.config['POSTS_PER_PAGE'], False)
-    return render_template('chipid_results.html', title='芯片ID查询结果', results=pagination.items, pagination=pagination)
+    results = pagination.items
+    return render_template('chipid_results.html', title='芯片ID查询结果', results=results, pagination=pagination)
