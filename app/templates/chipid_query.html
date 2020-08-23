@@ -7,7 +7,6 @@
         <div class="form-group">
             <label for="field_query" class="font-weight-bold">填入审批单号后6位或者派工单号</label>
             <input type="text" class="form-control form-control-sm" id="field_query" name="field_query"
-                   autocomplete="off"
                    required>
         </div>
         <div class="form-group">
@@ -22,10 +21,17 @@
             </select>
         </div>
         <div class="form-group">
-            <label class="radio font-weight-bold"><input type="radio" name="method_query" checked="checked"
-                                             value="1">按审批单号查询</label>
-            <label class="radio font-weight-bold"><input type="radio" name="method_query" value="2">按派工单号查询</label>
+            <div class="custom-control custom-radio font-weight-bold custom-control-inline">
+                <input type="radio" class="custom-control-input" id="by_approval_no" name="method_query" value="1"
+                       checked="checked">
+                <label class="custom-control-label" for="by_approval_no">按审批单号查询</label>
+            </div>
+            <div class="custom-control custom-radio font-weight-bold custom-control-inline">
+                <input type="radio" class="custom-control-input" id="by_work_order_no" name="method_query" value="2">
+                <label class="custom-control-label" for="by_work_order_no">按派工单号查询</label>
+            </div>
         </div>
+        <br>
         <div class="form-group">
             <button type="submit" class="btn btn-primary">查询</button>
         </div>
