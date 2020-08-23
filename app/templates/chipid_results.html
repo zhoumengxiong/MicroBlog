@@ -28,13 +28,21 @@
                 </tbody>
             </table>
         </div>
-        <ul class="pager">
-            {% if prev_url %}
-                <li><a href="{{ prev_url }}">上一页</a></li>
-            {% endif %}
-            {% if next_url %}
-                <li><a href="{{ next_url }}">下一页</a></li>
-            {% endif %}
-        </ul>
+        <!-- 手动分页 需从视图函数传入prev_url和next_url参数。-->
+        <!--
+        <div class="center">
+            <ul class="pagination">
+                {% if prev_url %}
+                    <li class="page-item"><a class="page-link" href="{{ prev_url }}">上一页</a></li>
+                {% endif %}
+                {% if next_url %}
+                    <li class="page-item"><a class="page-link" href="{{ next_url }}">下一页</a></li>
+                {% endif %}
+            </ul>
+        </div>-->
+        <!-- bootstrap自动分页 ->
+            {% from 'bootstrap/pagination.html' import render_pagination %}
+        <div>{{ render_pagination(pagination=pagination,align='center',prev="上一页",next="下一页",args="{{args}}") }}</div>
+
     {% endif %}
 {% endblock %}

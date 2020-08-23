@@ -212,11 +212,11 @@ def chipid_results():
             ProductCategory.product_category.in_(product_category)).paginate(
             page, app.config['POSTS_PER_PAGE'], False)
     results = pagination.items
-    next_url = url_for(
-        'chipid_results', field_query=field_query, product_category=product_category,
-        method_query=method_query, page=pagination.next_num) if pagination.has_next else None
-    prev_url = url_for(
-        'chipid_results', field_query=field_query, product_category=product_category,
-        method_query=method_query, page=pagination.prev_num) if pagination.has_prev else None
-    return render_template('chipid_results.html', title='芯片ID查询结果', results=results, next_url=next_url,
-                           prev_url=prev_url,pagination=pagination)
+    # next_url = url_for(
+    #     'chipid_results', field_query=field_query, product_category=product_category,
+    #     method_query=method_query, page=pagination.next_num) if pagination.has_next else None
+    # prev_url = url_for(
+    #     'chipid_results', field_query=field_query, product_category=product_category,
+    #     method_query=method_query, page=pagination.prev_num) if pagination.has_prev else None
+    args = dict(pagination=pagination, field_query=field_query, product_category=product_category)
+    return render_template('chipid_results.html', title='芯片ID查询结果', results=results, args=args, pagination=pagination)
