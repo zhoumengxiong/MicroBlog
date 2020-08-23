@@ -40,9 +40,13 @@
                 {% endif %}
             </ul>
         </div>-->
-        <!-- bootstrap自动分页 ->
-            {% from 'bootstrap/pagination.html' import render_pagination %}
-        <div>{{ render_pagination(pagination=pagination,align='center',prev="上一页",next="下一页",args="{{args}}") }}</div>
-
+        <!-- bootstrap自动分页 -->
+        {% from 'bootstrap/pagination.html' import render_pagination %}
+        {% if results %}
+            <div>
+                {{ render_pagination(pagination=pagination,align='center',prev="上一页",next="下一页",
+                    args=args) }}
+            </div>
+        {% endif %}
     {% endif %}
 {% endblock %}
