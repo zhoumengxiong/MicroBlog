@@ -218,5 +218,5 @@ def chipid_results():
     # prev_url = url_for(
     #     'chipid_results', field_query=field_query, product_category=product_category,
     #     method_query=method_query, page=pagination.prev_num) if pagination.has_prev else None
-    args = dict(pagination=pagination, field_query=field_query, product_category=product_category)
-    return render_template('chipid_results.html', title='芯片ID查询结果', results=results, args=args, pagination=pagination)
+    args = dict(field_query=field_query, product_category=product_category, method_query=method_query)
+    return render_template('chipid_results.html', title='芯片ID查询结果', results=results, pagination=pagination, args=args)
