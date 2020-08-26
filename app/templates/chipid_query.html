@@ -8,6 +8,7 @@
     </h3>
     <br>
     <form method="POST" action="">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
         <div class="form-group">
             <label for="field_query" class="font-weight-bold vertical_line">填入审批单号后6位或者派工单号</label>
             <input type="text" class="form-control" id="field_query" name="field_query"
