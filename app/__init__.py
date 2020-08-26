@@ -10,6 +10,7 @@ import os
 from flask_mail import Mail
 from flask_moment import Moment
 from flask_bootstrap import Bootstrap
+from flask_wtf import CSRFProtect
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -19,6 +20,7 @@ login = LoginManager(app)
 mail = Mail(app)
 bootstrap = Bootstrap(app)
 moment = Moment(app)
+csrf = CSRFProtect(app)
 
 login.login_view = 'login'
 
