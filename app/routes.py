@@ -12,10 +12,10 @@ from app.forms import SearchForm
 
 @app.before_request
 def before_request():
+    g.search_form = SearchForm()
     if current_user.is_authenticated:
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
-        g.search_form = SearchForm()
 
 
 @app.route('/', methods=['GET', 'POST'])
