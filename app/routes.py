@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, g, current_app
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, ResetPasswordRequestForm, \
     ResetPasswordForm
@@ -7,6 +7,7 @@ from app.models import User, Post, ApprovalNo, WorkOrderNo, ProductCategory, Chi
 from werkzeug.urls import url_parse
 from datetime import datetime
 from app.email import send_api_mail
+from app.forms import SearchForm
 
 
 @app.before_request
@@ -14,6 +15,7 @@ def before_request():
     if current_user.is_authenticated:
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
+        g.search_form = SearchForm()
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -220,3 +222,18 @@ def chipid_results():
     #     method_query=method_query, page=pagination.prev_num) if pagination.has_prev else None
     args = dict(field_query=field_query, product_category=product_category, method_query=method_query)
     return render_template('chipid_results.html', title='芯片ID查询结果', results=results, pagination=pagination, args=args)
+
+
+@app.route('/search')
+def search():
+    if not g.search_form.validate():
+        return redirect(url_for('explore'))
+    page = request.args.get('page', 1, type=int)
+    posts, total = Post.search(g.search_form.q.data, page,
+                               current_app.config['POSTS_PER_PAGE'])
+    print(total)
+    next_url = url_for('search', q=g.search_form.q.data, page=page + 1) if total['value'] > page * current_app.config[
+        'POSTS_PER_PAGE'] else None
+    prev_url = url_for('search', q=g.search_form.q.data, page=page - 1) if page > 1 else None
+    return render_template('search.html', title='Search', posts=posts,
+                           next_url=next_url, prev_url=prev_url)
