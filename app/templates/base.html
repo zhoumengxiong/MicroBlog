@@ -13,12 +13,66 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts.css') }}" type="text/css">
 </head>
 <body>
+{% block nav %}
+    {#导航栏#}
+    {% from 'bootstrap/nav.html' import render_nav_item %}
+
+    {#    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">#}
+    {#        <div class="navbar-nav mr-auto">#}
+    {#            {{ render_nav_item('index', 'Home') }}#}
+    {#            {% if current_user.is_authenticated %}#}
+    {#                {{ render_nav_item('user', 'Profile',username=current_user.username) }}#}
+    {#                {{ render_nav_item('explore', 'Explore') }}#}
+    {#                {{ render_nav_item('logout', 'Logout') }}#}
+    {#            {% else %}#}
+    {#                {{ render_nav_item('login', 'Login') }}#}
+    {#            {% endif %}#}
+    {#        </div>#}
+    {#        {% if g.search_form %}#}
+    {#            {% from 'bootstrap/form.html' import render_form %}#}
+    {#            {{ render_form(g.search_form,action=url_for("search"),method="get",form_type="inline") }}#}
+    {#            <form class="form-inline" method="get" action="{{ url_for("search") }}">#}
+    {#                {{ g.search_form.q(size=20, class='form-control',#}
+    {#                                        placeholder=g.search_form.q.label.text) }}#}
+    {#                <button class="btn btn-success" type="submit">Search</button>#}
+    {#            </form>#}
+    {#        {% endif %}#}
+    {#    </nav>#}
+
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #0f4c75;">
+        <div class="container">
+            <div class="navbar-header"><a class="navbar-brand" href="{{ url_for('index') }}">MicroBlog</a></div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav  nav-justified mr-auto">
+                    {{ render_nav_item('index', 'Home') }}
+                    {% if current_user.is_authenticated %}
+                        {{ render_nav_item('user', 'Profile',username=current_user.username) }}
+                        {{ render_nav_item('explore', 'Explore') }}
+                        {{ render_nav_item('logout', 'Logout') }}
+                    {% else %}
+                        {{ render_nav_item('login', 'Login') }}
+                    {% endif %}
+                </ul>
+                {% if g.search_form %}
+                    <form class="form-inline my-2 my-lg-0" method="get" action="{{ url_for
+                                ("search") }}">
+                        {{ g.search_form.q(class='form-control mr-sm-2',
+                            placeholder=g.search_form.q.label.text) }}
+                        {#                        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">#}
+                        <button class="btn btn-light my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+{% endblock nav %}
+<br>
 <main class="container">
-    <header>
-        <h2 class="text-center">
-            Flask test
-        </h2>
-    </header>
+    {#    <header>#}
+    {#        <h2 class="text-center">#}
+    {#            Flask test#}
+    {#        </h2>#}
+    {#    </header>#}
     {#    <div>#}
     {#        <a href="{{ url_for('index') }}">Home</a>#}
     {#        {% if current_user.is_anonymous %}#}
@@ -29,19 +83,20 @@
     {#            <a href="{{ url_for("logout") }}">Logout</a>#}
     {#        {% endif %}#}
     {#    </div>#}
-    {% from 'bootstrap/nav.html' import render_breadcrumb_item %}
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            {{ render_breadcrumb_item('index', 'Home') }}
-            {% if current_user.is_authenticated %}
-                {{ render_breadcrumb_item('user', 'Profile',username=current_user.username) }}
-                {{ render_breadcrumb_item('explore', 'Explore') }}
-                {{ render_breadcrumb_item('logout', 'Logout') }}
-            {% else %}
-                {{ render_breadcrumb_item('login', 'Login') }}
-            {% endif %}
-        </ol>
-    </nav>
+    {#面包屑导航#}
+    {#    {% from 'bootstrap/nav.html' import render_breadcrumb_item %}#}
+    {#    <nav aria-label="breadcrumb">#}
+    {#        <ol class="breadcrumb">#}
+    {#            {{ render_breadcrumb_item('index', 'Home') }}#}
+    {#            {% if current_user.is_authenticated %}#}
+    {#                {{ render_breadcrumb_item('user', 'Profile',username=current_user.username) }}#}
+    {#                {{ render_breadcrumb_item('explore', 'Explore') }}#}
+    {#                {{ render_breadcrumb_item('logout', 'Logout') }}#}
+    {#            {% else %}#}
+    {#                {{ render_breadcrumb_item('login', 'Login') }}#}
+    {#            {% endif %}#}
+    {#        </ol>#}
+    {#    </nav>#}
     {% for message in get_flashed_messages() %}
         <div class="alert alert-info alert-dismissible">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
