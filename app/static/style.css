@@ -37,3 +37,11 @@ footer {
     margin-bottom: 20px;
     margin-top: 20px;
 }
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 20px;
+    width: 100%;
+}
