@@ -13,33 +13,32 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts.css') }}" type="text/css">
 </head>
 <body>
-{% block nav %}
-    {#导航栏#}
-    {% from 'bootstrap/nav.html' import render_nav_item %}
+{#导航栏#}
+{% from 'bootstrap/nav.html' import render_nav_item %}
 
-    {#    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">#}
-    {#        <div class="navbar-nav mr-auto">#}
-    {#            {{ render_nav_item('index', 'Home') }}#}
-    {#            {% if current_user.is_authenticated %}#}
-    {#                {{ render_nav_item('user', 'Profile',username=current_user.username) }}#}
-    {#                {{ render_nav_item('explore', 'Explore') }}#}
-    {#                {{ render_nav_item('logout', 'Logout') }}#}
-    {#            {% else %}#}
-    {#                {{ render_nav_item('login', 'Login') }}#}
-    {#            {% endif %}#}
-    {#        </div>#}
-    {#        {% if g.search_form %}#}
-    {#            {% from 'bootstrap/form.html' import render_form %}#}
-    {#            {{ render_form(g.search_form,action=url_for("search"),method="get",form_type="inline") }}#}
-    {#            <form class="form-inline" method="get" action="{{ url_for("search") }}">#}
-    {#                {{ g.search_form.q(size=20, class='form-control',#}
-    {#                                        placeholder=g.search_form.q.label.text) }}#}
-    {#                <button class="btn btn-success" type="submit">Search</button>#}
-    {#            </form>#}
-    {#        {% endif %}#}
-    {#    </nav>#}
-
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #0f4c75;">
+{#    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">#}
+{#        <div class="navbar-nav mr-auto">#}
+{#            {{ render_nav_item('index', 'Home') }}#}
+{#            {% if current_user.is_authenticated %}#}
+{#                {{ render_nav_item('user', 'Profile',username=current_user.username) }}#}
+{#                {{ render_nav_item('explore', 'Explore') }}#}
+{#                {{ render_nav_item('logout', 'Logout') }}#}
+{#            {% else %}#}
+{#                {{ render_nav_item('login', 'Login') }}#}
+{#            {% endif %}#}
+{#        </div>#}
+{#        {% if g.search_form %}#}
+{#            {% from 'bootstrap/form.html' import render_form %}#}
+{#            {{ render_form(g.search_form,action=url_for("search"),method="get",form_type="inline") }}#}
+{#            <form class="form-inline" method="get" action="{{ url_for("search") }}">#}
+{#                {{ g.search_form.q(size=20, class='form-control',#}
+{#                                        placeholder=g.search_form.q.label.text) }}#}
+{#                <button class="btn btn-success" type="submit">Search</button>#}
+{#            </form>#}
+{#        {% endif %}#}
+{#    </nav>#}
+<header>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: #0f4c75;" role="navigation">
         <div class="container">
             <div class="navbar-header"><a class="navbar-brand" href="{{ url_for('index') }}">MicroBlog</a></div>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -65,9 +64,9 @@
             </div>
         </div>
     </nav>
-{% endblock nav %}
+</header>
 <br>
-<main class="container">
+<main class="container" role="main">
     {#    <header>#}
     {#        <h2 class="text-center">#}
     {#            Flask test#}
@@ -103,10 +102,19 @@
             {{ message }}</div>
     {% endfor %}
     {% block content %}{% endblock %}
-    <footer class="text-center">
-        <small>&copy; 2020 <a href="{{ url_for('index') }}">Dream all rights reserved.</a></small>
-    </footer>
 </main>
+<footer id="contentinfo">
+    <div class="container">
+        <small>&copy; 2020 <a href="{{ url_for('index') }}">Dream all rights reserved.</a></small>
+    </div>
+</footer>
+{#<footer id="contentinfo">#}
+{#    <nav class="navbar navbar-default navbar fixed-bottom">#}
+{#        <div class="container">#}
+{#            <small>&copy; 2020 <a href="{{ url_for('index') }}">Dream all rights reserved.</a></small>#}
+{#        </div>#}
+{#    </nav>#}
+{#</footer>#}
 {{ bootstrap.load_js() }}
 {{ moment.include_moment(local_js=url_for('static', filename='js/moment-with-locales.min.js')) }}
 {{ moment.locale(auto_detect=True) }}
