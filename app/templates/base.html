@@ -53,9 +53,9 @@
                     {% if current_user.is_authenticated %}
                         {{ render_nav_item('user', 'Profile',username=current_user.username) }}
                         {{ render_nav_item('explore', 'Explore') }}
-                        {{ render_nav_item('chip_id', 'ChipId') }}
                         {{ render_nav_item('logout', 'Logout') }}
                     {% else %}
+                        {{ render_nav_item('chip_id', 'ChipId') }}
                         {{ render_nav_item('login', 'Login') }}
                     {% endif %}
                 </ul>
