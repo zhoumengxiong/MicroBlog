@@ -42,26 +42,26 @@
     <header>
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #0f4c75;" role="navigation">
             <div class="container">
-                <div class="navbar-header"><a class="navbar-brand" href="{{ url_for('index') }}">MicroBlog</a></div>
+                <div class="navbar-header"><a class="navbar-brand" href="{{ url_for('main.index') }}">MicroBlog</a></div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav nav-justified mr-auto">
-                        {{ render_nav_item('index', 'Home') }}
-                        {{ render_nav_item('chip_id', 'ChipId') }}
+                        {{ render_nav_item('main.index', 'Home') }}
+                        {{ render_nav_item('main.chip_id', 'ChipId') }}
                         {% if current_user.is_authenticated %}
-                        {{ render_nav_item('user', 'Profile',username=current_user.username) }}
-                        {{ render_nav_item('explore', 'Explore') }}
-                        {{ render_nav_item('logout', 'Logout') }}
+                        {{ render_nav_item('main.user', 'Profile',username=current_user.username) }}
+                        {{ render_nav_item('main.explore', 'Explore') }}
+                        {{ render_nav_item('auth.logout', 'Logout') }}
                         {% else %}
-                        {{ render_nav_item('login', 'Login') }}
+                        {{ render_nav_item('auth.login', 'Login') }}
                         {% endif %}
                     </ul>
                     {% if g.search_form %}
                     <form class="form-inline my-2 my-lg-0" method="get" action="{{ url_for
-                                ("search") }}">
+                                ("main.search") }}">
                         {{ g.search_form.q(class='form-control mr-sm-2',
                             placeholder=g.search_form.q.label.text) }}
                         {#                        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">#}
@@ -113,7 +113,7 @@
     </main>
     <footer id="contentinfo" class="footer mt-auto py-2">
         <div class="container">
-            <small>&copy; 2020 <a href="{{ url_for('index') }}">Dream all rights reserved.</a></small>
+            <small>&copy; 2020 <a href="{{ url_for('main.index') }}">Dream all rights reserved.</a></small>
         </div>
     </footer>
     {{ bootstrap.load_js() }}
