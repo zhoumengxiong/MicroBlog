@@ -1,3 +1,4 @@
+from re import template
 from flask import render_template, flash, redirect, url_for, request, g, current_app
 from .. import db
 from .forms import EditProfileForm, PostForm, SearchForm
@@ -157,8 +158,17 @@ def search():
     posts, total = Post.search(g.search_form.q.data, page,
                                current_app.config['POSTS_PER_PAGE'])
     print(total)
-    next_url = url_for('main.search', q=g.search_form.q.data, page=page + 1) if total['value'] > page * current_app.config[
-        'POSTS_PER_PAGE'] else None
+    next_url = url_for('main.search', q=g.search_form.q.data, page=page + 1) if total['value'] > page * \
+                                                                                current_app.config[
+                                                                                    'POSTS_PER_PAGE'] else None
     prev_url = url_for('main.search', q=g.search_form.q.data, page=page - 1) if page > 1 else None
     return render_template('search.html', title='Search', posts=posts,
                            next_url=next_url, prev_url=prev_url)
+
+
+@bp.route('/resume-web')
+def get_resume():
+    phone_number = '17520495650'
+    email = "zhoumengxiong@outlook.com"
+    career_objective = "测试工程师"
+    return render_template('WebDevelopResume.html', phone_number=phone_number, email=email, career_objective=career_objective)
