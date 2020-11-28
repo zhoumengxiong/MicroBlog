@@ -171,4 +171,5 @@ def get_resume():
     phone_number = '17520495650'
     email = "zhoumengxiong@outlook.com"
     career_objective = "测试工程师"
-    return render_template('WebDevelopResume.html', phone_number=phone_number, email=email, career_objective=career_objective)
+    return render_template('WebDevelopResume.html', phone_number=phone_number, email=email,
+                           career_objective=career_objective)
