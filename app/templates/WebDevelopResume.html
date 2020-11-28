@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome-all.min.css') }}">
     {#    <link rel="stylesheet" href="css/base.css">#}
     <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
-    {{ bootstrap.load_css() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
 </head>
 <body>
 <!--
     整个文档的Div容器
 -->
-<div id="resume-framework" class="container">
+<div id="resume-framework" class="container contain">
     <!--
         base-info指基础信息，包括头像，姓名，邮箱，电话，链接等
     -->
@@ -127,10 +127,10 @@
             <span class="banner-span"><i class="white-icon fas fa-graduation-cap"></i>&nbsp;教育经历</span>
         </div>
         <b>武汉理工大学华夏学院 | 机械电子工程 | 2006年- 2010年</b>
-{#        <ul>#}
-{#            <li>操作系统(85分 / 专业排名18/100)，数据结构(90分 / 专业排名10/100)</li>#}
-{#            <li>2015-2016学年获得美国大学生数学建模竞赛一等奖</li>#}
-{#        </ul>#}
+        {#        <ul>#}
+        {#            <li>操作系统(85分 / 专业排名18/100)，数据结构(90分 / 专业排名10/100)</li>#}
+        {#            <li>2015-2016学年获得美国大学生数学建模竞赛一等奖</li>#}
+        {#        </ul>#}
     </div> <!-- end education -->
     <br>
     <!--
