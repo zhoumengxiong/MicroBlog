@@ -23,12 +23,13 @@
         -->
         <div id="base-info-wrapper">
             <!-- 可以通过调整base.css中的#base-info的width来使顶部居中，例如60% -->
-            <div id="base-info">
+            <div id="base-info media">
                 <!-- 头像 -->
                 {#            <img id="avatar" alt="avatar" src="imgs/avatar.jpg"/>#}
-                <img id="avatar" alt="avatar" class="img-fluid rounded float-left" src="{{ url_for('static', filename='images/avatar.jpg') }}"/>
+                <img id="avatar" alt="avatar" class="img-fluid rounded mb-3"
+                     src="{{ url_for('static', filename='images/avatar.jpg') }}"/>
                 <!-- 其他基础信息 -->
-                <div id="base-info-span">
+                <div id="base-info-span" class="media-body">
                     <b id="name">周梦雄</b>
                     <hr>
                     <span>
@@ -149,5 +150,6 @@
         </div> <!-- end education -->
     </div> <!-- end resume-framework -->
 </main>
+{{ bootstrap.load_js() }}
 </body>
 </html>
