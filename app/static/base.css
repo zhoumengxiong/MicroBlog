@@ -51,10 +51,10 @@ h3 {
 
 #avatar {
     float: left;
-    width: 200px;
-    border-radius: 8px;
+    width: 150px;
+    /*border-radius: 8px;*/
     margin-right: 100px;
-    margin-left: 10px;
+    /*margin-left: 10px;*/
 }
 
 .fas, .fab {
