@@ -166,10 +166,10 @@ def search():
                            next_url=next_url, prev_url=prev_url)
 
 
-@bp.route('/resume-web')
+@bp.route('/resume_data_analysis')
 def get_resume():
-    phone_number = '17520495650'
+    phone_number = '15320810712'
     email = "zhoumengxiong@outlook.com"
-    career_objective = "测试工程师"
-    return render_template('WebDevelopResume.html', phone_number=phone_number, email=email,
+    career_objective = "数据分析"
+    return render_template('resume_data_analysis.html', phone_number=phone_number, email=email,
                            career_objective=career_objective)
